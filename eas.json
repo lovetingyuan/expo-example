@@ -9,9 +9,11 @@
     },
     "preview": {
       "channel": "preview",
+      "node": "18.15.0",
       "distribution": "internal",
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
       }
     },
     "production": {
