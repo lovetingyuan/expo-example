@@ -4,6 +4,7 @@ import * as Application from 'expo-application'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import * as Updates from 'expo-updates'
 
 function DetailsScreen() {
   return (
@@ -33,6 +34,10 @@ function HomeScreen({ navigation }) {
       <Text>build version: {Application.nativeBuildVersion}</Text>
       <Text>color: {color}</Text>
       <Button title="Go to Details" onPress={() => navigation.navigate('Details')} />
+      <Text>update channel: {Updates.channel}</Text>
+      <Text>update created at: {Updates.createdAt.toString()}</Text>
+      <Text>update runtimeVersion: {Updates.runtimeVersion}</Text>
+      <Text>update Id: {Updates.updateId}</Text>
       <StatusBar style="auto" />
     </View>
   )
