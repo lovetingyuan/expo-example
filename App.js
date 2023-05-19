@@ -1,9 +1,19 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, useColorScheme } from 'react-native'
+import { StyleSheet, Text, View, useColorScheme, Button } from 'react-native'
 import * as Application from 'expo-application'
 import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-export default function App() {
+function DetailsScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Details Screen</Text>
+    </View>
+  )
+}
+
+function HomeScreen({ navigation }) {
   const [updateTime, setUpdateTime] = React.useState('')
   React.useEffect(() => {
     Application.getLastUpdateTimeAsync().then(time => {
@@ -22,8 +32,21 @@ export default function App() {
       <Text>app version: {Application.nativeApplicationVersion}</Text>
       <Text>build version: {Application.nativeBuildVersion}</Text>
       <Text>color: {color}</Text>
+      <Button title="Go to Details" onPress={() => navigation.navigate('Details')} />
       <StatusBar style="auto" />
     </View>
+  )
+}
+const Stack = createNativeStackNavigator()
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
