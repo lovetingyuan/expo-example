@@ -12,8 +12,12 @@ function DetailsScreen() {
   const onRefresh = () => {}
   return (
     <View style={{ flex: 1 }}>
-      <Text>Details Screen111</Text>
-      <RefreshWebView isRefresh={isRefreshing} onRefresh={onRefresh}></RefreshWebView>
+      <Text>Details Screen1112</Text>
+      <RefreshWebView
+        isRefresh={isRefreshing}
+        onRefresh={onRefresh}
+        source={{ uri: 'https://baidu.com/' }}
+      />
     </View>
   )
 }
