@@ -5,7 +5,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import * as Updates from 'expo-updates'
-import RefreshWebView from './Web'
+// import RefreshWebView from './Web'
 
 function DetailsScreen() {
   const [isRefreshing, setRefreshing] = React.useState(false)
