@@ -9,7 +9,7 @@ import * as Updates from 'expo-updates'
 function DetailsScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
+      <Text>Details Screen111</Text>
     </View>
   )
 }
