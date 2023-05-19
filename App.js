@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, useColorScheme } from 'react-native'
 import * as Application from 'expo-application'
 import React from 'react'
 
@@ -7,9 +7,10 @@ export default function App() {
   const [updateTime, setUpdateTime] = React.useState('')
   React.useEffect(() => {
     Application.getLastUpdateTimeAsync().then(time => {
-      setUpdateTime(time)
+      setUpdateTime(time.toString())
     })
   }, [])
+  const color = useColorScheme()
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app! this is change test github action</Text>
@@ -20,6 +21,7 @@ export default function App() {
       <Text>update: {updateTime}</Text>
       <Text>app version: {Application.nativeApplicationVersion}</Text>
       <Text>build version: {Application.nativeBuildVersion}</Text>
+      <Text>color: {color}</Text>
       <StatusBar style="auto" />
     </View>
   )
