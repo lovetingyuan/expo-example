@@ -5,11 +5,15 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import * as Updates from 'expo-updates'
+import RefreshWebView from './Web'
 
 function DetailsScreen() {
+  const [isRefreshing, setRefreshing] = React.useState(false)
+  const onRefresh = () => {}
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1 }}>
       <Text>Details Screen111</Text>
+      <RefreshWebView isRefresh={isRefreshing} onRefresh={onRefresh}></RefreshWebView>
     </View>
   )
 }
