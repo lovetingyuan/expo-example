@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, useColorScheme, Button } from 'react-native'
 import * as Application from 'expo-application'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import * as Updates from 'expo-updates'
@@ -19,6 +19,7 @@ import { useAppState } from '@react-native-community/hooks'
 
 function HomeScreen({ navigation }) {
   const [updateTime, setUpdateTime] = React.useState('')
+  const [count, setCount] = React.useState(0)
   React.useEffect(() => {
     Application.getLastUpdateTimeAsync().then(time => {
       setUpdateTime(time.toString())
@@ -27,7 +28,10 @@ function HomeScreen({ navigation }) {
   const color = useColorScheme()
   const color2 = useColorSchema2()
   const currentAppState = useAppState()
-
+  const updateCountRef = useRef(0)
+  useEffect(() => {
+    updateCountRef.current++
+  })
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app! this is change test github action</Text>
@@ -42,9 +46,13 @@ function HomeScreen({ navigation }) {
         color: {color} - {color2}
       </Text>
       <Text>app state: {currentAppState}</Text>
-      <Text>timestamp: {Date.now()}</Text>
+      <Text>
+        timestamp: {Date.now()}, update count: {updateCountRef.current}
+      </Text>
 
       <Button title="Go to Details" onPress={() => navigation.navigate('Details')} />
+      <Button title={'Add ' + count} onPress={() => setCount(c => c + 1)} />
+
       <Text>update channel: {Updates.channel}</Text>
       <Text>update created at: {Updates.createdAt.toString()}</Text>
       <Text>update runtimeVersion: {Updates.runtimeVersion}</Text>
