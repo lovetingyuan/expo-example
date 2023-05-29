@@ -5,19 +5,12 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import * as Updates from 'expo-updates'
-// import RefreshWebView from './Web'
+import useColorSchema2 from './useColorSchema2'
 
 function DetailsScreen() {
-  const [isRefreshing, setRefreshing] = React.useState(false)
-  const onRefresh = () => {}
   return (
     <View style={{ flex: 1 }}>
-      <Text>Details Screen11123</Text>
-      {/* <RefreshWebView
-        isRefresh={isRefreshing}
-        onRefresh={onRefresh}
-        source={{ uri: 'https://baidu.com/' }}
-      /> */}
+      <Text>details page</Text>
     </View>
   )
 }
@@ -30,6 +23,7 @@ function HomeScreen({ navigation }) {
     })
   }, [])
   const color = useColorScheme()
+  const color2 = useColorSchema2()
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app! this is change test github action</Text>
@@ -40,7 +34,9 @@ function HomeScreen({ navigation }) {
       <Text>update: {updateTime}</Text>
       <Text>app version: {Application.nativeApplicationVersion}</Text>
       <Text>build version: {Application.nativeBuildVersion}</Text>
-      <Text>color: {color}</Text>
+      <Text>
+        color: {color} - {color2}
+      </Text>
       <Button title="Go to Details" onPress={() => navigation.navigate('Details')} />
       <Text>update channel: {Updates.channel}</Text>
       <Text>update created at: {Updates.createdAt.toString()}</Text>
@@ -50,6 +46,7 @@ function HomeScreen({ navigation }) {
     </View>
   )
 }
+
 const Stack = createNativeStackNavigator()
 
 export default function App() {
