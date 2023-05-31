@@ -60,7 +60,10 @@ function HomeScreen({ navigation }) {
       <Button title={'Add ' + count} onPress={() => setCount(c => c + 1)} />
 
       <Text>update channel: {Updates.channel}</Text>
-      <Text>update created at: {Updates.createdAt.toString()}</Text>
+      <Text>
+        update created at: {Updates.createdAt.toLocaleDateString()} -{' '}
+        {Updates.createdAt.toLocaleTimeString()}
+      </Text>
       <Text>update runtimeVersion: {Updates.runtimeVersion}</Text>
       <Text>update Id: {Updates.updateId}</Text>
       <StatusBar style="auto" />
