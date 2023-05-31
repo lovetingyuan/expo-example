@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, useColorScheme, Button, Appearance } from 'react-native'
+import { StyleSheet, Text, View, useColorScheme, Button, Appearance, Alert } from 'react-native'
 import * as Application from 'expo-application'
 import React, { useEffect, useRef } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
@@ -44,7 +44,11 @@ function HomeScreen({ navigation }) {
       <Text>update: {updateTime}</Text>
       <Text>app version: {Application.nativeApplicationVersion}</Text>
       <Text>build version: {Application.nativeBuildVersion}</Text>
-      <Text>
+      <Text
+        onPress={() => {
+          Alert.alert('color: ' + Appearance.getColorScheme())
+        }}
+      >
         color: {color} - {color2} - {colorScheme}
       </Text>
       <Text>app state: {currentAppState}</Text>
